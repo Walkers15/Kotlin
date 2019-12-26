@@ -2,6 +2,7 @@
 Run > Edit Configurations 에서 인자 추가
 클래스 충돌 방지(import.com.example.edu as User) // "as" 사용
 
+
 val - 읽기전용 / var - 중간에 쓰기 가능
 데이터 추상화 - 자료형만 선언해 둠
 추론된 자료형 확인하기 = Ctrl + Shift + P
@@ -21,6 +22,31 @@ Typedef사용하기 - typealias
 
 ※NPE
 null 할당하기 - ? 사용(String?)
-?사용한 자료형 호출하기 - 세이프 콜과 not-null단정 기호
+?사용한 자료형 호출하기 - 세이프 콜과 not-null단정 기호 / 조건문을 활용해 null 검사하기
+
 세이프 콜 - 호출할 변수 이름 뒤에 ?. 붙임 //println("str1: $str1 length: ${str1?.length}")
 not-null 단정 기호(!!.) - 컴파일러가 null을 검사하지 않음 > 강제 NPE 발생
+
+조건문 활용(if(str1 != null) ~ else ~)
+
+세이프 콜(?.) & 엘비스 연산자(?:)
+?: 기준으로, null이면 왼쪽, null이 아니면 오른쪽 값을 반환
+
+자료형 비교, 검사, 반환
+코틀린에서는 다른 자료형을 할당할 수 없음(int a = 1 double b= a //불가!
+캐스팅 메소드 사용 - toDouble(),toInt ,,
+== vs ===
+값만 확인 , 참조 주소만 확인(a: Int = 128 === b: Int? = 128) -> False//둘이 다름!
+기본형 vs 참조형
+기본형 - 스택에 바로 값 저장
+참조형 - heap메모리에 값 만들어 놓고 주소 참조
+
+스마트 캐스트 - 컴파일러가 자동으로 캐스팅
+Number 자료형
+
+자료형 검사 - 조건문 안에 is 사용 - if(num is Int)
+
+Any 자료형 - 약간 자바의 Object느낌?(비슷하지만 서로 다른 유형) 모든 클래스의 최상위 기본 클래스, is를 사용하여 검사하면 자동으로 캐스팅
+as를 통해 캐스팅 - val x: String = y as String
+묵시적 변환 - any
+함수에서 Any 사용 - Any를 인자로 받고, 조건문에서 is를 사용하여 캐스팅함
