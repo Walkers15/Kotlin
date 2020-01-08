@@ -57,6 +57,13 @@ fun Function(para a, para b): Type {
   '''
   return Type Variable
  } 의 형태로 명시함
- 
-중괄호 안의 코드가 한 줄이라면(ex. a+b) 중괄호를 = 로 대체할 수 있음, 또한 반환 값을 추론할 수 있다면 반환값의 자료형도 생략 가능
+ 중괄호 안의 코드가 한 줄이라면(ex. a+b) 중괄호를 = 로 대체할 수 있음, 또한 반환 값을 추론할 수 있다면 반환값의 자료형도 생략 가능
 fun sum(a : Int, b : Int ) = a+b
+
+함수 매개변수에 디폴트 값 설정하기 : 함수 선언부 매개변수 옆에 "= 저장값" 의 형태로 저장(ex. fun add(name : String, email : String = "default" , Phone : Int = 000))
+매개변수 값을 이름과 함께 호출할 수 있음
+
+매개변수 갯수가 변화하는 함수
+vararg & in 사용
+vararg를 사용하면 가변 인자는 받은 자료형을 기반으로 하는 배열이 됨
+배열을 읽기 위해 함수 내에서 in키워드 사용
