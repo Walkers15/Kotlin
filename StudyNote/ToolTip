@@ -50,3 +50,13 @@ Any 자료형 - 약간 자바의 Object느낌?(비슷하지만 서로 다른 유
 as를 통해 캐스팅 - val x: String = y as String
 묵시적 변환 - any
 함수에서 Any 사용 - Any를 인자로 받고, 조건문에서 is를 사용하여 캐스팅함
+
+함수
+함수에 반환값이 있다면, 반환값의 자료형을 반드시 명시해야 함
+fun Function(para a, para b): Type {
+  '''
+  return Type Variable
+ } 의 형태로 명시함
+ 
+중괄호 안의 코드가 한 줄이라면(ex. a+b) 중괄호를 = 로 대체할 수 있음, 또한 반환 값을 추론할 수 있다면 반환값의 자료형도 생략 가능
+fun sum(a : Int, b : Int ) = a+b
