@@ -16,3 +16,31 @@ val multi: (Int, Int) -> Int = {x,y -> x*y} >> 셋 다 똑같은 의미임! 다 
 val greet: () -> Unit = {println{"Hello World!")} 매개변수를 표현할 필요가 없으므로, 화살표 양쪽과 화살표 자체를 생략하여 표현
 val greet = {println("Hello World!")} 로 생략하여 표현 가능
 
+람다식의 값에 의한 호출
+함수(람다식으로 표현한 이름 없는 함수)가 다른 함수의 인자로 전달될 경우, 람다식 함수는 값으로 처리되어 "그 즉시" 함수가 수행된 후 값을 반환함
+val result = callbyValue(lambda())
+
+이름에 의한 호출
+람다식 함수(lambda()) 대신 람다식 이름(otherLambda)으로 호출하는 경우
+
+다른 함수의 참조에 의한 일반 함수 호출
+인자의 수와 자료형의 갯수가 동일하면, :: 기호를 이용해 소괄호와 인자를 생략하고 사용할 수 있음
+fun sum (x:Int, y: Int) = x + y
+fun funcParam(a: Int, b: Int, c: (Int,Int) -> Int): Int{
+  return c(a,b)
+}
+funcParam(3,2,::sum)
+
+
+예제2
+
+fun hello(body: (String, String) -> String): Unit{
+  println(body("Hello","World"))
+}
+fun text(a: String, b: String) = "Hi!, $a $b"
+일때
+hello(::text)
+hello({a, b -> text(a,b)}
+hello{a,b -> text(a,b)}
+위 세 가지 표현 모두 동일한 결과를 출력함
+
