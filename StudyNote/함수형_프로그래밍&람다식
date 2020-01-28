@@ -46,3 +46,15 @@ hello{a,b -> text(a,b)}
 
 람다식의 매개변수
 매개변수 파일 참조
+
+고차 함수와 람다식의 사용 예시
+ - ReentrantLock을 통해 공유 자원에 접근하는 코드를 보호할 수 있음
+
+fun <T> lock(reLock: ReentrantLock, body: ()->T): T{ //제네릭 함수
+  reLock.lock()
+  try{
+    return body()
+  } finally {
+    relock.unlock()
+  }
+} - 
