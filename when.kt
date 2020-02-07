@@ -29,3 +29,4 @@ fun main() {
     }
     println("$score 점의 점수를 받은 학생의 등급은 $grade 입니다")
 }
+ 
