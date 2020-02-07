@@ -1,0 +1,87 @@
+if
+
+if문 간락하게 사용하기
+val max = if(a > b) a else b
+
+블록의 표현식이 길어지면, 마지막 표현식이 변수에 반환되어 할당
+val max = if(a>b){
+  print("a선택")
+  a
+}else{
+  print("b선택")
+  b
+}
+
+if ~ else if ~ else 형태로 조건문 중첩 가능
+
+in 연산자와 범위 연산자(<=,>=)
+비교 & 논리합 연산자(80.0 <= score && score <= 89.0) 등을 연결하여 매번 조건식을 세우기 번거로우므로,
+코틀린은 in과 ..을 사용한 범위 연산자를 제공함
+if(score in 80.0 .. 89.9){
+  grade ='A'
+}else if(score in 70.0 .. 79.9){
+  grade = 'B'
+} 와 같이 사용
+
+
+when - 다중 선택을 위한 조건문(Java - Switch)
+인자가 있는 경우와 인자가 없는 경우로 나뉨
+
+인자가 있는 when
+
+when(인자) {
+  인자에 일치하는 값 혹은 표현식 -> 수행할 문장
+  인자에 일치하는 범위 -> 수행할 문장
+  ...
+  else -> 수행할 문장
+}
+의 형태로 사용함
+
+when(x){
+  1 -> print("x==1")
+  2 -> print("x==2")
+  else { //블록 사용 가능
+    print("x is not 1 or 2")
+  }
+}
+-> 화살표 옆에 중괄호를 사용하여 블록으로 수행할 문장을 구성할 수 있음
+쉼표를 통해 일치하는 조건을 한 번에 여러 개 표현할 수 있음 ex) 0,1 -> print("x == 0 or x == 1")
+
+when문 안에도 in을 사용할 수 있음.
+!in 을 사용하면, 해당 범위 이외의 요소를 가리키게 됨 ex) !in 10..20  <<10미만 혹은 20초과
+when문 안에 is를 사용하여, 자료형을 검사할 수 있음
+val str = "Hi"
+val result = when(str) {
+  is String -> "문자열입니다"
+  else false
+}
+
+예제 - When.kt 참고
+
+인자가 없는 when
+when문에 인자가 주어지지 않으면, else if처럼 각각의 조건을 실행할 수 있음
+또한 특정 인자에 제한하지 않고, 조건이나 표현식을 직접 만들 수 있음
+when {
+  조건[혹은 표현식] -> 실행할 문장
+  ...
+}
+
+예제 - When.kt 참고
+
+ 인자 있는 when의 인자로써 Any를 사용하여 다양한 자료형의 인자를 받을 수 있음
+ fun main() {
+  cases("Hello")
+  cases(1)
+  cases(System.currentTimeMillis())
+  cases(MyCalss())
+}
+fun cases(obj : Any){
+  when(obj){
+    1 -> println("Int : $obj)
+    "Hello" -> println("String : $obj")
+    is Long -> println("Long: $obj")
+    !is String -> println("Not a String")
+    else -> println("Unknown")
+  }
+}
+ 
