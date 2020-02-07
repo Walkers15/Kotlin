@@ -1,0 +1,2 @@
+코틀린 표준 입력 함수 - readLine() : String
+readLine()!!.toDouble() 등으로 캐스팅하여 사용할 수 있음
